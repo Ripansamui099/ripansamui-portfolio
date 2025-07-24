@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Welcome to your project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/71f69a52-035f-47e0-843d-e7b08bc91a4d
+**URL**: ripan-samui-portfolio.vercel.app/
 
 ## How can I edit this code?
 
@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/71f69a52-035f-47e0-843d-e7b08bc91a4d) and start prompting.
+Simply visit the [Project](ripan-samui-portfolio.vercel.app/) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
