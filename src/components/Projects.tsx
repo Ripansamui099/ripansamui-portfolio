@@ -114,92 +114,78 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <Card 
               key={project.id} 
-              className={`overflow-hidden card-elegant group ${
-                project.featured ? 'md:col-span-2 lg:col-span-1' : ''
-              } fade-in-up`}
+              className="relative overflow-hidden bg-gradient-to-br from-background/80 to-background/60 backdrop-blur-sm border border-border/50 rounded-3xl p-6 group hover:shadow-xl transition-all duration-300 fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Project Image */}
-              <div className="relative overflow-hidden h-48 bg-gradient-to-br from-primary/20 to-secondary/20">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Featured Badge */}
-                {project.featured && (
-                  <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
-                    Featured
-                  </Badge>
-                )}
-                
-                {/* Project Links */}
-                <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    className="rounded-full p-2"
-                    onClick={() => window.open(project.github, '_blank')}
+              {/* Featured Badge */}
+              {project.featured && (
+                <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground rounded-full px-3 py-1 text-xs font-medium">
+                  Featured
+                </Badge>
+              )}
+              
+              {/* Project Links */}
+              <div className="absolute top-4 right-4 flex space-x-2">
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  className="rounded-full w-10 h-10 p-0 bg-muted/80 hover:bg-muted"
+                  onClick={() => window.open(project.github, '_blank')}
+                >
+                  <Github size={16} />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="rounded-full w-10 h-10 p-0 bg-primary/80 hover:bg-primary"
+                  onClick={() => window.open(project.live, '_blank')}
                   >
-                    <Github size={16} />
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="default"
-                    className="rounded-full p-2"
-                    onClick={() => window.open(project.live, '_blank')}
-                  >
-                    <ExternalLink size={16} />
-                  </Button>
+                  <ExternalLink size={16} />
+                </Button>
+              </div>
+
+              {/* Project Image Area */}
+              <div className="relative h-40 mb-6 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                <div className="text-6xl text-primary/30 font-bold">
+                  {project.category}
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <div className="mb-3">
-                  <Badge variant="outline" className="text-xs">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className="text-xs rounded-full px-3 py-1 bg-muted/50">
                     {project.category}
                   </Badge>
                 </div>
                 
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
                     <Badge 
                       key={tagIndex} 
                       variant="secondary"
-                      className="text-xs bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                      className="text-xs bg-primary/10 text-primary rounded-full px-3 py-1"
                     >
                       {tag}
                     </Badge>
                   ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1"
-                    onClick={() => window.open(project.github, '_blank')}
-                  >
-                    <Github size={16} className="mr-2" />
-                    Code
-                  </Button>
-                  <Button
-                    variant="default"
-                    size="sm"
-                    className="flex-1"
-                    onClick={() => window.open(project.live, '_blank')}
-                  >
-                    <ExternalLink size={16} className="mr-2" />
-                    Live Demo
-                  </Button>
+                  {project.tags.length > 3 && (
+                    <Badge 
+                      variant="secondary"
+                      className="text-xs bg-muted/50 text-muted-foreground rounded-full px-3 py-1"
+                    >
+                      +{project.tags.length - 3}
+                    </Badge>
+                  )}
                 </div>
               </div>
             </Card>

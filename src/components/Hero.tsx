@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Download, ArrowRight, Code, Database, Shield, Smartphone, Brain, Trophy } from 'lucide-react';
-import ripanProfile from '@/assets/ripan-profile.jpg';
+import ripanProfile from '@/assets/ripan-hero-profile.jpg';
 
 const Hero = () => {
   const techIcons = [
